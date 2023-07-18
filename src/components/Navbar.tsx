@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from './ui/button'
+import { DialogDemo } from './Dialog'
 
 interface Props {}
 
@@ -13,16 +14,17 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`${show ? 'h-[18rem]' : 'h-20'} md:h-20 flex-col fixed z-10 w-full bg-orange-100 shadow-md`}>
-            <div className={`sticky top-0 flex justify-between items-center px-12`}>
-                <div className='p-4'>
-                    <h1 className='hover:cursor-pointer text-3xl font-bold'>Logo</h1>
+        <nav className={`${show ? 'h-[18rem]' : 'h-20'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
+            <div className={`sticky top-0 flex justify-between items-center px-20`}>
+                <div className='flex items-center'>
+                    <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
                 </div>
-                <ul className='hidden md:flex space-x-10 pt-6'>
-                    <li className='hover:cursor-pointer'><Link href='/' >Home</Link></li>
-                    <li className='hover:cursor-pointer'><Link href='/about'>About</Link></li>
-                    <li className='hover:cursor-pointer'><Link href='/browse games'>Browse</Link></li>
-                    <li className='hover:cursor-pointer'><Link href='/signup'><Button>Sign up</Button></Link></li>
+                <ul className='hidden md:flex items-center space-x-10 pt-6'>
+                    <Link href='/' >Home</Link>
+                    <Link href='/about'>About</Link>
+                    <Link href='/mcq'>Quiz</Link>
+                    <Link href='/leaderboard'>Leaderboard</Link>
+                    <DialogDemo />
                 </ul>
                 <div className='md:hidden hover:cursor-pointer'>
                     {!show ? (<Image
@@ -47,7 +49,7 @@ const Navbar = () => {
                     <li className='p-2 hover:cursor-pointer'>Home</li>
                     <li className='p-2 hover:cursor-pointer'>About</li>
                     <li className='p-2 hover:cursor-pointer'>Browse</li>
-                    <li className='p-2 hover:cursor-pointer'>Sign up</li>
+                    <DialogDemo />
                 </ul>
             </div>}
         </nav>
