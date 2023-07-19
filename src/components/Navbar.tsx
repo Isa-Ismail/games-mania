@@ -14,8 +14,8 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`${show ? 'h-[18rem]' : 'h-20'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
-            <div className={`sticky top-0 flex justify-between items-center px-20`}>
+        <nav className={`${show ? 'h-[22rem]' : 'h-20'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
+            <div className={`sticky top-0 flex justify-between items-center md:px-20 px-10`}>
                 <div className='flex items-center'>
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
                 </div>
@@ -45,10 +45,11 @@ const Navbar = () => {
                 </div>
             </div>
             {show&&<div className='md:hidden flex items-center justify-center'>
-                <ul>
-                    <li className='p-2 hover:cursor-pointer'>Home</li>
-                    <li className='p-2 hover:cursor-pointer'>About</li>
-                    <li className='p-2 hover:cursor-pointer'>Browse</li>
+                <ul className='space-y-2'>
+                    <li className='p-2 hover:cursor-pointer'><Link href='/'>Home</Link></li>
+                    <li className='p-2 hover:cursor-pointer'><Link href='/about'>About</Link></li>
+                    <li className='p-2 hover:cursor-pointer'><Link href='/mcq'>Quiz</Link></li>
+                    <li className='p-2 hover:cursor-pointer'><Link href='/leaderboard'>Leaderboard</Link></li>
                     <DialogDemo />
                 </ul>
             </div>}
