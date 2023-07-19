@@ -13,9 +13,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export function DialogDemo() {
+
+  const router = useRouter()
 
   const [form, setForm] = useState({ username: '', email: '', password: '', city: '', country: '', phone: '' })
   
@@ -23,9 +26,9 @@ export function DialogDemo() {
 
   const [toggle, setToggle] = useState(true)
 
-  const RegisterURL = 'http://localhost:8000/api/auth/register'
+  const RegisterURL = 'https://ict-6.vercel.app/api/auth/register'
 
-  const LoginURL = 'https://localhost:8000/api/auth/login'
+  const LoginURL = 'https://ict-6.vercel.app/api/auth/login'
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -35,11 +38,10 @@ export function DialogDemo() {
   const handleSubmit = (e: any) => { 
     e.preventDefault()
     axios.post(toggle ? RegisterURL : LoginURL, toggle ? form : formLogin).then((response) => {
-        console.log('User registered successfully:', response);
-        // You can handle the successful registration here, like showing a success message or redirecting to a login page.
+        console.log(response.data.token);
       })
       .catch((error) => {
-        console.error('Registration failed:', error.response);
+        console.error(error);
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
   }
@@ -73,24 +75,24 @@ export function DialogDemo() {
             </Label>
             <Input onChange={handleChange} id="email" name="email" value={toggle?form.email:formLogin.email} className="col-span-3" />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          {toggle&&<div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="city" className="text-right">
               City
             </Label>
             <Input onChange={handleChange} id="city" name="city" value={form.city} className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          </div>}
+          {toggle&&<div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="phone" className="text-right">
               Phone
             </Label>
             <Input onChange={handleChange} id="phone" name="phone" value={form.phone} className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          </div>}
+          {toggle&&<div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="country" className="text-right">
               Country
             </Label>
             <Input onChange={handleChange} id="country" name="country" value={form.country} className="col-span-3" />
-        </div>
+        </div>}
         <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="password" className="text-right">
               Password

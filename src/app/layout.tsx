@@ -3,6 +3,7 @@ import './globals.css'
 import Footer from '@/components/Footer'
 import { Roboto } from 'next/font/google'
 import { Toaster } from "@/components/ui/toaster"
+import { StoreProvider } from '@/lib/ProviderContext'
  
 const roboto = Roboto({
   weight: '400',
@@ -23,10 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <StoreProvider>
             <Navbar />
               {children}
             <Footer />
-            <Toaster />
+          <Toaster />
+        </StoreProvider>
         </body>
     </html>
   )

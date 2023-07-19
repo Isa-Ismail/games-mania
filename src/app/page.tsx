@@ -6,8 +6,14 @@ import { useToast } from "@/components/ui/use-toast"
 import { DatePickerDemo } from '@/components/Datepicker'
 import Image from 'next/image'
 import { SelectDemo } from '@/components/Select'
+import { useContext } from 'react'
+import { Store } from '@/lib/ProviderContext'
 
 export default function Home() {
+
+  const {state, dispatch} = useContext(Store);
+
+  console.log(state)
 
   const [form, setForm] = useState({
     name: '',
