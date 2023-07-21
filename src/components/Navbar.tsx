@@ -14,8 +14,8 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`${show ? 'h-[22rem]' : 'h-20'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
-            <div className={`sticky top-0 flex justify-between items-center md:px-20 px-10`}>
+        <nav className={`${show ? 'h-[22rem]' : 'h-22'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
+            <div className={`sticky top-0 flex justify-between items-center md:px-20 px-6`}>
                 <div className='flex items-center'>
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
                 </div>
@@ -36,9 +36,9 @@ const Navbar = () => {
                     />) :
                         (<Image
                         onClick={() => setShow(!show)}
-                        src="/ham.png"
-                        width={100}
-                        height={100}
+                        src="/close.png"
+                        width={40}
+                        height={40}
                         alt="Picture of the author"
                     />)
                     }

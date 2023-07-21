@@ -13,16 +13,30 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import axios from "axios"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import * as z from 'zod';
 
 export function DialogDemo() {
 
   const router = useRouter()
 
+  const [open, setOpen] = useState(true)
+
+  const emailSchema = z.string().email();
+
+  console.log(emailSchema)
+
+  const handleOpenChange = (newOpenState:boolean) => {
+    setOpen(newOpenState);
+  };
+
   const [form, setForm] = useState({ username: '', email: '', password: '', city: '', country: '', phone: '' })
   
   const [formLogin, setFormLogin] = useState({ email: '', password: '' })
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const [toggle, setToggle] = useState(true)
 
@@ -37,15 +51,18 @@ export function DialogDemo() {
   
   const handleSubmit = (e: any) => { 
     e.preventDefault()
+    setIsLoading(true)
     axios.post(toggle ? RegisterURL : LoginURL, toggle ? form : formLogin).then((response) => {
-        console.log(response.data.token);
+      console.log(response.data.token);
+      localStorage.setItem('token', response.data.token)
+      setIsLoading(false)
+      setOpen(false)
       })
       .catch((error) => {
         console.error(error);
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
     router.push('/mcq')
-    close()
   }
 
     
@@ -53,7 +70,7 @@ export function DialogDemo() {
     console.log(form)
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline">Sign up</Button>
       </DialogTrigger>
@@ -69,7 +86,7 @@ export function DialogDemo() {
             <Label htmlFor="username" className="text-right">
               Name
             </Label>
-            <Input onChange={handleChange} id="username" name="username" value={form.username} className="col-span-3" />
+            <Input type="email" onChange={handleChange} id="username" name="username" value={form.username} className="col-span-3" />
           </div>}
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="email" className="text-right">
@@ -102,6 +119,7 @@ export function DialogDemo() {
             <Input onChange={handleChange} type="password" id="password" name="password" value={toggle?form.password:formLogin.password} className="col-span-3" />
           </div>
         </div>
+        {isLoading && <Image src="/load.gif" width={100} height={100} alt="Picture of the author" />}
         <DialogFooter>
           {toggle?<Button onClick={handleSubmit} type="submit">Sign up</Button>:<Button onClick={handleSubmit} type="submit">Sign in</Button>}
         </DialogFooter>

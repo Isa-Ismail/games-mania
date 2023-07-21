@@ -70,8 +70,6 @@ export default function Home() {
         <SelectDemo name = 'Fruits' />
 
         <DatePickerDemo onDate={handleDate} />
-
-        <CardWithForm />
       
       </div>
     </div>
