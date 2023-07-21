@@ -44,6 +44,8 @@ export function DialogDemo() {
         console.error(error);
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
+    router.push('/mcq')
+    close()
   }
 
     

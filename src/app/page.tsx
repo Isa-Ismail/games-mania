@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { SelectDemo } from '@/components/Select'
 import { useContext } from 'react'
 import { Store } from '@/lib/ProviderContext'
+import { CardWithForm } from '@/components/Card'
 
 export default function Home() {
 
@@ -69,6 +70,8 @@ export default function Home() {
         <SelectDemo name = 'Fruits' />
 
         <DatePickerDemo onDate={handleDate} />
+
+        <CardWithForm />
       
       </div>
     </div>

@@ -18,6 +18,8 @@ interface CartItem {
 }
 
 interface State {
+    authenticated?: boolean;
+    token: string | null;
     bought: boolean;
     cart: {
         cartItems: CartItem[];
@@ -26,6 +28,8 @@ interface State {
 }
 
 const initialState: State = {
+    authenticated: false,
+    token: null,
     bought: false,
     cart: {
         cartItems: [],
@@ -71,6 +75,16 @@ const reducer = (state: State, action: Action) => {
                 ...state,
                 bought: action.payload,
             };
+        case "AUTHENTICATED":
+            return {
+                ...state,
+                authenticated: action.payload,
+            }
+        case "SET_TOKEN":
+            return {
+                ...state,
+                token: action.payload,
+            }
         default:
             return state;
     }
