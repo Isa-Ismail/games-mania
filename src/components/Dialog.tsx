@@ -22,14 +22,10 @@ export function DialogDemo() {
 
   const router = useRouter()
 
-  const [open, setOpen] = useState(true)
-
-  const emailSchema = z.string().email();
-
-  console.log(emailSchema)
+  const [openModal, setOpenModal] = useState(true)
 
   const handleOpenChange = (newOpenState:boolean) => {
-    setOpen(newOpenState);
+    setOpenModal(newOpenState);
   };
 
   const [form, setForm] = useState({ username: '', email: '', password: '', city: '', country: '', phone: '' })
@@ -56,7 +52,7 @@ export function DialogDemo() {
       console.log(response.data.token);
       localStorage.setItem('token', response.data.token)
       setIsLoading(false)
-      setOpen(false)
+      setOpenModal(false)
       })
       .catch((error) => {
         console.error(error);
@@ -70,7 +66,7 @@ export function DialogDemo() {
     console.log(form)
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={openModal} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline">Sign up</Button>
       </DialogTrigger>
