@@ -22,7 +22,7 @@ export function DialogDemo() {
 
   const router = useRouter()
 
-  const [openModal, setOpenModal] = useState(true)
+  const [openModal, setOpenModal] = useState(false)
 
   const handleOpenChange = (newOpenState:boolean) => {
     setOpenModal(newOpenState);
