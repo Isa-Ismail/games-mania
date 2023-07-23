@@ -27,7 +27,7 @@ const Navbar = () => {
                     <Link href='/about'>About</Link>
                     <Link href='/mcq'>Quiz</Link>
                     <Link href='/leaderboard'>Leaderboard</Link>
-                    {authenticated?<Button onClick={()=> dispatch({type:"LOGOUT"})}>LogOut</Button>:<DialogDemo />}
+                    {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
                 </div>
                 <div className='md:hidden hover:cursor-pointer'>
                     {!show ? (<Image
@@ -53,7 +53,7 @@ const Navbar = () => {
                     <Link href='/about'>About</Link>
                     <Link href='/mcq'>Quiz</Link>
                     <Link href='/leaderboard'>Leaderboard</Link>
-                    <DialogDemo />
+                    {authenticated?<Button onClick={() => { dispatch({ type: "LOGOUT" }); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
                 </div>
             </div>}
         </nav>

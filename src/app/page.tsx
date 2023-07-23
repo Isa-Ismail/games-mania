@@ -9,6 +9,7 @@ import { SelectDemo } from '@/components/Select'
 import { useContext } from 'react'
 import { Store } from '@/lib/ProviderContext'
 import { CardWithForm } from '@/components/Card'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Home() {
 
@@ -44,8 +45,8 @@ export default function Home() {
 
       <div className='md:flex items-center justify-evenly space-y-10'>
         <div className='w-[20rem]  text-center flex-col justify-center mx-10 space-y-10'>
-          <h1 className='text-5xl text-red-400'>Nintendo 🚩</h1>
-          <p className='text-red-400'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima reprehenderit autem maxime nam temporibus est itaque iure, iusto voluptatum distinctio adipisci? Libero quas quos itaque perferendis, nisi tempore officia nostrum.</p>
+          <h1 className='text-5xl text-cyan-400'>Nintendo 🚩</h1>
+          <p className='text-cyan-400'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima reprehenderit autem maxime nam temporibus est itaque iure, iusto voluptatum distinctio adipisci? Libero quas quos itaque perferendis, nisi tempore officia nostrum.</p>
         </div>
         <div>
           <Image  src={'/hero.png'} alt='hero' width={500} height={500} />

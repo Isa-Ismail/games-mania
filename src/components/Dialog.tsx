@@ -26,7 +26,7 @@ export function DialogDemo() {
   const { state, dispatch } = useContext(Store);
   
   console.log(state)
-  
+
   const [openModal, setOpenModal] = useState(false)
 
   const handleOpenChange = (newOpenState:boolean) => {
@@ -59,8 +59,10 @@ export function DialogDemo() {
       fetch(`https://ict-6.vercel.app/api/auth/${response.data.id}`).then((res) => res.json()).then((data) => {
         console.log(data)
         dispatch({ type: 'SET_USER', payload: data })
+        localStorage.setItem('user', JSON.stringify(data))
       })
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('authenticated', 'true')
       dispatch({ type: 'SET_TOKEN', payload: response.data.token })
       setIsLoading(false)
       setOpenModal(false)
