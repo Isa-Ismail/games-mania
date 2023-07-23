@@ -45,9 +45,9 @@ interface State {
 }
 
 const initialState: State = {
-    authenticated: localStorage.getItem('authenticated')?JSON.parse(localStorage.getItem('authenticated')!):false,
-    user: localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')!):null,
-    token: localStorage.getItem('token')?localStorage.getItem('token'):null,
+    authenticated: false,
+    user: null,
+    token: null,
     bought: false,
     cart: {
         cartItems: [],

@@ -13,10 +13,6 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function Home() {
 
-  const {state, dispatch} = useContext(Store);
-
-  console.log(state)
-
   const [form, setForm] = useState({
     name: '',
     email: '',
