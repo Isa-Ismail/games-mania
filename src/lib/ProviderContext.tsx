@@ -17,8 +17,25 @@ interface CartItem {
     amount: number;
 }
 
+interface User {
+  _id: string;
+  username: string;
+  email: string;
+  country: string;
+  city: string;
+  phone: string;
+  password: string;
+  isAdmin: boolean;
+  designation: string;
+  isFaculty: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 interface State {
     authenticated?: boolean;
+    user: User | null;
     token: string | null;
     bought: boolean;
     cart: {
@@ -29,6 +46,7 @@ interface State {
 
 const initialState: State = {
     authenticated: false,
+    user: null,
     token: null,
     bought: false,
     cart: {
@@ -63,6 +81,11 @@ const reducer = (state: State, action: Action) => {
                     ),
                 },
             };
+        case "SET_USER":
+            return {
+                ...state,
+                user: action.payload,
+            };
         case "EMPTY_CART":
             return {
                 ...state,
@@ -80,10 +103,18 @@ const reducer = (state: State, action: Action) => {
                 ...state,
                 authenticated: action.payload,
             }
+        case "LOGOUT":
+            return {
+                ...state,
+                authenticated: false,
+                user: null,
+                token: null,
+            }
         case "SET_TOKEN":
             return {
                 ...state,
                 token: action.payload,
+                authenticated: true
             }
         default:
             return state;

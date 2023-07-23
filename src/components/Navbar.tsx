@@ -1,31 +1,34 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { DialogDemo } from './Dialog'
+import { Store } from '@/lib/ProviderContext'
 
 interface Props {}
 
 const Navbar = () => {
 
+    const { state: { authenticated }, dispatch } = useContext(Store);
+
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`${show ? 'h-[22rem]' : 'h-22'} md:h-20 flex-col fixed z-10 w-full bg-red-400 shadow-md`}>
-            <div className={`sticky top-0 flex justify-between items-center md:px-20 px-6`}>
-                <div className='flex items-center'>
+        <nav className={`${show ? 'h-[22rem]' : 'h-22'} md:h-20 flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
+            <div className={`sticky top-0 flex justify-between items-center px-6`}>
+                <div className='flex items-center p-3'>
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
                 </div>
-                <ul className='hidden md:flex items-center space-x-10 pt-6'>
+                <div className='hidden md:flex items-center space-x-10 pt-2'>
                     <Link href='/' >Home</Link>
                     <Link href='/about'>About</Link>
                     <Link href='/mcq'>Quiz</Link>
                     <Link href='/leaderboard'>Leaderboard</Link>
-                    <DialogDemo />
-                </ul>
+                    {authenticated?<Button onClick={()=> dispatch({type:"LOGOUT"})}>LogOut</Button>:<DialogDemo />}
+                </div>
                 <div className='md:hidden hover:cursor-pointer'>
                     {!show ? (<Image
                         onClick={() => setShow(!show)}
@@ -45,13 +48,13 @@ const Navbar = () => {
                 </div>
             </div>
             {show&&<div className='md:hidden flex items-center justify-center'>
-                <ul className='space-y-2'>
-                    <li className='p-2 hover:cursor-pointer'><Link href='/'>Home</Link></li>
-                    <li className='p-2 hover:cursor-pointer'><Link href='/about'>About</Link></li>
-                    <li className='p-2 hover:cursor-pointer'><Link href='/mcq'>Quiz</Link></li>
-                    <li className='p-2 hover:cursor-pointer'><Link href='/leaderboard'>Leaderboard</Link></li>
+                <div className='space-y-6 flex flex-col'>
+                    <Link href='/'>Home</Link>
+                    <Link href='/about'>About</Link>
+                    <Link href='/mcq'>Quiz</Link>
+                    <Link href='/leaderboard'>Leaderboard</Link>
                     <DialogDemo />
-                </ul>
+                </div>
             </div>}
         </nav>
     )

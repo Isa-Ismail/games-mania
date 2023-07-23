@@ -12,16 +12,21 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Store } from "@/lib/ProviderContext"
 import axios from "axios"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import * as z from 'zod';
 
 export function DialogDemo() {
 
   const router = useRouter()
 
+  const { state, dispatch } = useContext(Store);
+  
+  console.log(state)
+  
   const [openModal, setOpenModal] = useState(false)
 
   const handleOpenChange = (newOpenState:boolean) => {
@@ -39,6 +44,7 @@ export function DialogDemo() {
   const RegisterURL = 'https://ict-6.vercel.app/api/auth/register'
 
   const LoginURL = 'https://ict-6.vercel.app/api/auth/login'
+  
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -49,13 +55,19 @@ export function DialogDemo() {
     e.preventDefault()
     setIsLoading(true)
     axios.post(toggle ? RegisterURL : LoginURL, toggle ? form : formLogin).then((response) => {
-      console.log(response.data.token);
+      console.log(response.data);
+      fetch(`https://ict-6.vercel.app/api/auth/${response.data.id}`).then((res) => res.json()).then((data) => {
+        console.log(data)
+        dispatch({ type: 'SET_USER', payload: data })
+      })
       localStorage.setItem('token', response.data.token)
+      dispatch({ type: 'SET_TOKEN', payload: response.data.token })
       setIsLoading(false)
       setOpenModal(false)
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false)
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
     router.push('/mcq')
@@ -117,7 +129,8 @@ export function DialogDemo() {
         </div>
         {isLoading && <Image src="/load.gif" width={100} height={100} alt="Picture of the author" />}
         <DialogFooter>
-          {toggle?<Button onClick={handleSubmit} type="submit">Sign up</Button>:<Button onClick={handleSubmit} type="submit">Sign in</Button>}
+          {toggle ? <Button onClick={handleSubmit} type="submit">Sign up</Button> : <Button onClick={handleSubmit} type="submit">Sign in</Button>}
+          {}
         </DialogFooter>
         {toggle?<p className="text-center">Already have an account <span onClick={()=>setToggle(e=>!e)} className="hover:cursor-pointer underline text-green-700 px-2">sign in</span></p>:<p className="text-center">Don't have an account? <span onClick={()=>setToggle(e=>!e)} className="hover:cursor-pointer underline text-green-700 px-2">sign up</span></p>}
       </DialogContent>
