@@ -17,7 +17,7 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`${show ? 'h-[22rem]' : 'h-22'} md:h-20 flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
+        <nav className={`h-22 md:h-20 flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
             <div className={`sticky top-0 flex justify-between items-center px-6`}>
                 <div className='flex items-center p-3'>
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
             </div>
             {show&&<div className='md:hidden flex items-center justify-center'>
-                <div className='space-y-6 flex flex-col'>
+                <div className='space-y-6 flex flex-col py-4'>
                     <Link href='/'>Home</Link>
                     <Link href='/about'>About</Link>
                     <Link href='/mcq'>Quiz</Link>
