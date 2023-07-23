@@ -32,9 +32,9 @@ const Navbar = () => {
                 <div className='md:hidden hover:cursor-pointer'>
                     {!show ? (<Image
                         onClick={() => setShow(!show)}
-                        src="/ham.png"
-                        width={100}
-                        height={100}
+                        src="/open.png"
+                        width={40}
+                        height={40}
                         alt="Picture of the author"
                     />) :
                         (<Image

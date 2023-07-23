@@ -55,7 +55,7 @@ export default function Home() {
       <div className='flex md:space-x-10 justify-center'>
 
       <Button
-      className='bg-red-400'
+      className='bg-cyan-400'
       variant="outline"
       onClick={() => {
         toast({
