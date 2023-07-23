@@ -17,7 +17,7 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <nav className={`h-22 md:h-20 flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
+        <nav className={`h-22 md:h-20 flex flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
             <div className={`sticky top-0 flex justify-between items-center px-6`}>
                 <div className='flex items-center p-3'>
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
