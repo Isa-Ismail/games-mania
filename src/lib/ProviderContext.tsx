@@ -38,6 +38,7 @@ interface State {
     user: User | null;
     token: string | null;
     bought: boolean;
+    leaderboard?: any;
     cart: {
         cartItems: CartItem[];
     };
@@ -49,6 +50,7 @@ const initialState: State = {
     user: null,
     token: null,
     bought: false,
+    leaderboard: null,
     cart: {
         cartItems: [],
     },
@@ -97,6 +99,11 @@ const reducer = (state: State, action: Action) => {
             return {
                 ...state,
                 bought: action.payload,
+            };
+        case "LEADERBOARD":
+            return {
+                ...state,
+                leaderboard: action.payload,
             };
         case "AUTHENTICATED":
             return {

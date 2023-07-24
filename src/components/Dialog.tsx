@@ -66,13 +66,13 @@ export function DialogDemo() {
       dispatch({ type: 'SET_TOKEN', payload: response.data.token })
       setIsLoading(false)
       setOpenModal(false)
+      router.push('/mcq')
       })
       .catch((error) => {
         console.error(error);
         setIsLoading(false)
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
-    router.push('/mcq')
   }
 
     

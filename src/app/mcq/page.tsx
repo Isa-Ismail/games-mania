@@ -11,7 +11,7 @@ const page = () => {
     return (
         <div className='min-h-screen flex justify-center items-center'>
             <div>
-                <p>welcome <span className='text-cyan-400'>{ state.user?.username }</span></p>
+                <p>Quiz <span className='text-cyan-400'>{ state.user?.username }</span></p>
             </div>
         </div>
     )

@@ -52,8 +52,7 @@ export default function Home() {
       <div className='flex md:space-x-10 justify-center'>
 
       <Button
-      className='bg-cyan-400'
-      variant="outline"
+      className=''
       onClick={() => {
         toast({
           title: "Scheduled: Catch up",
