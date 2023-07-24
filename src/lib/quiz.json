@@ -1,0 +1,52 @@
+[
+  {
+    "question": "In the game 'The Legend of Zelda', what is the main character's name?",
+    "options": ["Link", "Mario", "Samus", "Kratos"],
+    "correctAnswer": "Link"
+  },
+  {
+    "question": "Which game features a battle royale mode called 'Warzone'?",
+    "options": ["Fortnite", "Call of Duty: Modern Warfare", "Apex Legends", "PUBG"],
+    "correctAnswer": "Call of Duty: Modern Warfare"
+  },
+  {
+    "question": "Which video game franchise includes the characters 'Mario' and 'Luigi'?",
+    "options": ["Sonic the Hedgehog", "Final Fantasy", "Super Mario", "Minecraft"],
+    "correctAnswer": "Super Mario"
+  },
+  {
+    "question": "What is the name of the high-fantasy action-adventure game series developed by 'FromSoftware'?",
+    "options": ["Dark Souls", "The Elder Scrolls", "Assassin's Creed", "The Witcher"],
+    "correctAnswer": "Dark Souls"
+  },
+  {
+    "question": "Which game is set in the world of Thedas and is known for its role-playing elements?",
+    "options": ["Dragon Age", "World of Warcraft", "Final Fantasy", "Overwatch"],
+    "correctAnswer": "Dragon Age"
+  },
+  {
+    "question": "What is the name of the iconic protagonist in the 'Half-Life' series?",
+    "options": ["Gordon Freeman", "John Marston", "Master Chief", "Nathan Drake"],
+    "correctAnswer": "Gordon Freeman"
+  },
+  {
+    "question": "In 'Minecraft', what material is used to craft torches?",
+    "options": ["Diamond", "Coal", "Iron", "Gold"],
+    "correctAnswer": "Coal"
+  },
+  {
+    "question": "Which game features a post-apocalyptic world where players control a 'Vault Dweller'?",
+    "options": ["The Last of Us", "Fallout", "BioShock", "Borderlands"],
+    "correctAnswer": "Fallout"
+  },
+  {
+    "question": "Which iconic video game character collects rings as a primary game mechanic?",
+    "options": ["Pac-Man", "Sonic the Hedgehog", "Donkey Kong", "Crash Bandicoot"],
+    "correctAnswer": "Sonic the Hedgehog"
+  },
+  {
+    "question": "In 'The Witcher 3: Wild Hunt', what is the name of the main protagonist?",
+    "options": ["Geralt of Rivia", "Ezio Auditore", "Joel", "Solid Snake"],
+    "correctAnswer": "Geralt of Rivia"
+  }
+]

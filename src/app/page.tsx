@@ -33,8 +33,6 @@ export default function Home() {
   const handleDate = (date: any) => {
     setSelected(date)
   }
-  
-  console.log(selected)
 
   return (
     <div className='min-h-screen flex flex-col space-y-20 justify-center'>
