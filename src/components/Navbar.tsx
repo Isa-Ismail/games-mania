@@ -16,6 +16,10 @@ const Navbar = () => {
 
     const [show, setShow] = useState(false)
 
+    const handleShow = (e: any) => {
+        setShow(e)
+    }
+
     return (
         <nav className={`h-22 md:h-20 flex flex-col fixed z-10 w-full bg-cyan-400 shadow-md`}>
             <div className={`sticky top-0 flex justify-between items-center px-6`}>
@@ -49,11 +53,11 @@ const Navbar = () => {
             </div>
             {show&&<div className='md:hidden flex items-center justify-center'>
                 <div className='space-y-6 flex flex-col py-4'>
-                    <Link href='/'>Home</Link>
-                    <Link href='/about'>About</Link>
-                    <Link href='/mcq'>Quiz</Link>
-                    <Link href='/leaderboard'>Leaderboard</Link>
-                    {authenticated?<Button onClick={() => { dispatch({ type: "LOGOUT" }); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
+                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/'>Home</Link>
+                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/about'>About</Link>
+                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/mcq'>Quiz</Link>
+                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/leaderboard'>Leaderboard</Link>
+                    {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); setShow(!show); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
                 </div>
             </div>}
         </nav>

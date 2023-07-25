@@ -12,27 +12,8 @@ import { CardWithForm } from '@/components/Card'
 import { useQuery } from '@tanstack/react-query'
 
 export default function Home() {
-
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-    date: new Date()
-  })
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
-    setForm({ ...form, [name]: value })
-  }
   
   const { toast } = useToast()
-  const [selected, setSelected] = useState()
-  const [date, setDate] = useState('')
-  const [dateFromChild, setDateFromChild] = useState('');
-
-  const handleDate = (date: any) => {
-    setSelected(date)
-  }
 
   return (
     <div className='min-h-screen flex flex-col space-y-20 justify-center'>
@@ -59,11 +40,9 @@ export default function Home() {
       }}
       >
         Show Toast
-        </Button>
+      </Button>
 
         <SelectDemo name = 'Fruits' />
-
-        <DatePickerDemo onDate={handleDate} />
       
       </div>
     </div>

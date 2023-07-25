@@ -16,8 +16,6 @@ import {
 export function DatePickerDemo(props: any) {
   const [date, setDate] = React.useState<Date>()
 
-  props.onDate(date && format(date, "PPP"))
-
   return (
     <Popover>
       <PopoverTrigger asChild>

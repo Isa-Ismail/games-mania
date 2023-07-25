@@ -43,6 +43,8 @@ interface State {
         cartItems: CartItem[];
     };
     totalItems: number;
+    score: number;
+    topic: string
 }
 
 const initialState: State = {
@@ -55,6 +57,8 @@ const initialState: State = {
         cartItems: [],
     },
     totalItems: 0,
+    score: 0,
+    topic: 'game'
 };
 
 const reducer = (state: State, action: Action) => { 
@@ -83,6 +87,11 @@ const reducer = (state: State, action: Action) => {
                     ),
                 },
             };
+        case "SCORE":
+            return {
+            ...state,
+                score: action.payload
+        }
         case "SET_USER":
             return {
                 ...state,
