@@ -57,7 +57,6 @@ export function DialogDemo() {
     axios.post(toggle ? RegisterURL : LoginURL, toggle ? form : formLogin).then((response) => {
       console.log(response.data);
       fetch(`https://ict-6.vercel.app/api/auth/${response.data.id}`).then((res) => res.json()).then((data) => {
-        console.log(data)
         dispatch({ type: 'SET_USER', payload: data })
         localStorage.setItem('user', JSON.stringify(data))
       })
@@ -74,10 +73,6 @@ export function DialogDemo() {
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
   }
-
-    
-
-    console.log(form)
 
   return (
     <Dialog open={openModal} onOpenChange={handleOpenChange}>

@@ -28,8 +28,6 @@ const page = () => {
 
     const quiz = state.topic==='game' && quizData[index]
 
-    console.log(score)
-
     if (!state.authenticated) {
         return (
             <div className='min-h-screen space-y-10 flex flex-col justify-center items-center'>
