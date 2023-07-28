@@ -122,7 +122,7 @@ export function DialogDemo() {
             <Input onChange={handleChange} type="password" id="password" name="password" value={toggle?form.password:formLogin.password} className="col-span-3" />
           </div>
         </div>
-        {isLoading && <Image src="/load.gif" width={100} height={100} alt="Picture of the author" />}
+        {isLoading && <Image className="mx-auto" src="/load.gif" width={100} height={100} alt="Picture of the author" />}
         <DialogFooter>
           {toggle ? <Button onClick={handleSubmit} type="submit">Sign up</Button> : <Button onClick={handleSubmit} type="submit">Sign in</Button>}
           {}

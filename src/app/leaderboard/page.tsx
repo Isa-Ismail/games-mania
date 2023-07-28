@@ -2,6 +2,7 @@
 
 import Table from '@/components/Table'
 import { Store } from '@/lib/ProviderContext'
+import Image from 'next/image'
 import React, { useContext, useEffect } from 'react'
 
 interface Props {
@@ -22,7 +23,7 @@ const page: React.FC<Props> = () => {
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
-            <Table data={state.leaderboard as []} />
+            {state.leaderboard ? <Table data={state.leaderboard as []} /> : <Image alt="powerful" src='/load.gif' width={100} height={100} />}
         </div>
     )
 }
