@@ -27,8 +27,6 @@ const Navbar = () => {
                     <Link href='/'><Image className='rounded-full' src={'/mario.png'} width={50} height={30} alt="Picture of the author" /></Link>
                 </div>
                 <div className='hidden md:flex items-center space-x-10 pt-2'>
-                    <Link href='/' >Home</Link>
-                    <Link href='/about'>About</Link>
                     <Link href='/mcq'>Quiz</Link>
                     <Link href='/leaderboard'>Leaderboard</Link>
                     {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
@@ -53,8 +51,6 @@ const Navbar = () => {
             </div>
             {show&&<div className='md:hidden flex items-center justify-center'>
                 <div className='space-y-6 flex flex-col py-4'>
-                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/'>Home</Link>
-                    <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/about'>About</Link>
                     <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/mcq'>Quiz</Link>
                     <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/leaderboard'>Leaderboard</Link>
                     {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); setShow(!show); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}

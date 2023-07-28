@@ -57,8 +57,18 @@ const page = () => {
                         Submit 
                     </Button>}
                 </div>
-            </div>: <Button onClick={()=>{dispatch({type:"SCORE", payload: score}); router.push('/about')}}>
-                        View score 
+            </div> : <Button onClick={() => {
+                fetch('https://ict-6.vercel.app/api/quiz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ score, topic: state.topic, userId: state.user._id })
+                });   
+                dispatch({ type: "SCORE", payload: score });
+                router.push('/about')
+                }}>
+                        Publish result and view score 
                     </Button>}
         </div>
     )

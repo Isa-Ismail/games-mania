@@ -14,44 +14,31 @@ interface Props {
     data: Array<any>
 }
 
-const TableComponent:React.FC<Props> = ({data}) => {
+const TableComponent: React.FC<Props> = ({ data }) => {
+    
+    const dataSorted = data?.sort((a, b) => b.score - a.score)
+
     return (
         <div>
-            <Table className="md:w-[50rem]">
-                <TableCaption>A list of your recent invoices.</TableCaption>
+            <Table className="md:w-[50rem] bg-black rounded-md">
+                <TableCaption>Quiz Leaderboard</TableCaption>
                     <TableHeader className="text-lg">
                     <TableRow>
-                            <TableHead className="text-cyan-400">Invoice</TableHead>
-                            <TableHead className="text-cyan-400">Status</TableHead>
-                            <TableHead className="text-cyan-400">Method</TableHead>
-                            <TableHead className="text-cyan-400 text-right">Amount</TableHead>
+                            <TableHead className="text-cyan-400">Position</TableHead>
+                            <TableHead className="text-cyan-400">User name</TableHead>
+                            <TableHead className="text-cyan-400">Topic</TableHead>
+                            <TableHead className="text-cyan-400">Score</TableHead>
                     </TableRow>
                     </TableHeader>
                     <TableBody>
+                    {dataSorted?.map((e, id) => (
                         <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                    </TableRow>
+                            <TableCell className="text-cyan-400">{ id+1 }</TableCell>
+                            <TableCell className="text-cyan-400">{ e.userId.username }</TableCell>
+                            <TableCell className="text-cyan-400">{ e.topic }</TableCell>
+                            <TableCell className="text-cyan-400">{ e.score }</TableCell>
+                        </TableRow>
+                        ))}
                     </TableBody>
             </Table>
         </div>

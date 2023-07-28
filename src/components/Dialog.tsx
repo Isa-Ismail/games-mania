@@ -24,8 +24,6 @@ export function DialogDemo() {
   const router = useRouter()
 
   const { state, dispatch } = useContext(Store);
-  
-  console.log(state)
 
   const [openModal, setOpenModal] = useState(false)
 
