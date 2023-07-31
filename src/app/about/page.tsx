@@ -5,8 +5,6 @@ import Link from 'next/link'
 
 import React, { useContext } from 'react'
 
-interface Props {}
-
 const page = () => {
     const {state} = useContext(Store)
     return (
