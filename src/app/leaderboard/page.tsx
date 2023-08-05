@@ -23,7 +23,7 @@ const page: React.FC<Props> = () => {
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
-            {state.leaderboard ? <Table data={state.leaderboard as []} /> : <Image alt="powerful" src='/load.gif' width={100} height={100} />}
+            {state.leaderboard ? <Table data={state.leaderboard as []} /> : <Image alt="cool" src='/load.gif' width={100} height={100} />}
         </div>
     )
 }

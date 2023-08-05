@@ -2,13 +2,13 @@
 
 import React, { useEffect } from 'react'
 
-interface Props {}
+interface Props { }
 
 const Footer = () => {
 
     return (
         <div>
-            
+
         </div>
     )
 }
