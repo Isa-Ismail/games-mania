@@ -27,10 +27,6 @@ export function DialogDemo() {
 
   const [openModal, setOpenModal] = useState(false)
 
-  const handleOpenChange = (newOpenState:boolean) => {
-    setOpenModal(newOpenState);
-  };
-
   const [form, setForm] = useState({ username: '', email: '', password: '', city: '', country: '', phone: '' })
   
   const [formLogin, setFormLogin] = useState({ email: '', password: '' })
@@ -73,7 +69,7 @@ export function DialogDemo() {
   }
 
   return (
-    <Dialog open={openModal} onOpenChange={handleOpenChange}>
+    <Dialog open={openModal} onOpenChange={setOpenModal}>
       <DialogTrigger asChild>
         <Button variant="outline">Sign up</Button>
       </DialogTrigger>
