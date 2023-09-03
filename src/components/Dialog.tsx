@@ -67,7 +67,7 @@ export function DialogDemo() {
         // Handle any errors that occurred during registration, like displaying an error message to the user.
       });
   }
-
+    
   return (
     <Dialog open={openModal} onOpenChange={setOpenModal}>
       <DialogTrigger asChild>

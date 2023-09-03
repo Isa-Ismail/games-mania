@@ -44,7 +44,7 @@ const page = () => {
                 <br />
                 <h1 className='text-center text-xl '>{quiz.question}</h1>
                 {quiz.options.map((option, id) => (
-                    <div className='flex flex-col items-center py-4' key={id}>
+                    <div className='flex justify-center py-4' key={id}>
                         <button onClick={() => { setOptIndex(id); setAnswer(option) }} className={optIndex===id?'w-40 rounded-lg p-2 bg-black text-white':'rounded-lg w-40 p-2 bg-white'}>
                             {option}
                         </button>
