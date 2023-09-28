@@ -18,10 +18,12 @@ export default function Home() {
   useEffect(() => {
         fetch('https://ict-6.vercel.app/api/quiz')
             .then(response => response.json())
-            .then(json => console.log(json))
+            .then(json => setData(json))
   }, [])
   
-  const { toast } = useToast()
+  const [data, setData] = useState([])
+
+  console.log(data)
   
 
   return (
