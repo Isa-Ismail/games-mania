@@ -10,41 +10,31 @@ import { useContext } from 'react'
 import { Store } from '@/lib/ProviderContext'
 import { CardWithForm } from '@/components/Card'
 import { useQuery } from '@tanstack/react-query'
+import TypewriterTitle from '@/components/Type'
+import Link from 'next/link'
 
 export default function Home() {
   
   const { toast } = useToast()
 
   return (
-    <div className='min-h-screen flex flex-col space-y-20 justify-center'>
+    <div className='min-h-screen grainy bg-gradient-to-r from-rose-100 to-teal-100 flex flex-col space-y-20 justify-center'>
 
-      <div className='md:flex items-center justify-evenly space-y-10'>
+      <div className='md:flex items-center justify-between mx-auto md:mx-[10rem] space-y-10'>
         <div className='w-[20rem]  text-center flex-col justify-center mx-10 space-y-10'>
-          <h1 className='text-5xl text-cyan-400'>Nintendo 🚩</h1>
-          <p className='text-cyan-400'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima reprehenderit autem maxime nam temporibus est itaque iure, iusto voluptatum distinctio adipisci? Libero quas quos itaque perferendis, nisi tempore officia nostrum.</p>
+          <h1 className='text-4xl font-bold text-teal-900'>Welcome to Pixel Puzzles Quiz</h1>
+          <h1 className='text-xl font-bold text-teal-900'><TypewriterTitle /></h1>
+          <div>
+            <Link href='/mcq'>
+              <Button variant='outline' className='text-white bg-gradient-to-r from-rose-400 to-teal-400'>Get started</Button>
+            </Link>
+          </div>
         </div>
         <div>
-          <Image  src={'/hero.png'} alt='hero' width={500} height={500} />
+          <Image  src={'/11.png'} alt='hero' width={300} height={300} />
         </div>
       </div>
-
-      <div className='flex md:space-x-10 justify-center'>
-
-      <Button
-      className=''
-      onClick={() => {
-        toast({
-          title: "Scheduled: Catch up",
-          description: "Friday, February 10, 2023 at 5:57 PM",
-        })
-      }}
-      >
-        Show Toast
-      </Button>
-
-        <SelectDemo name = 'Fruits' />
       
-      </div>
     </div>
   )
 }
