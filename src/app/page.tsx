@@ -37,7 +37,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div>
+        <div className='mx-[4rem]'>
           <Image  src={'/11.png'} alt='hero' width={300} height={300} />
         </div>
       </div>
