@@ -10,7 +10,7 @@ const page = () => {
     const { state } = useContext(Store);
     
     return (
-        <div className='min-h-screen flex justify-center items-center'>
+        <div className='min-h-screen space-x-9 flex justify-center items-center'>
             <p>you scored {state.score} {state.score < 5 ? '😔' : '🥳'}</p>
             <Link href='/leaderboard'>
                 <Button className='bg-green-600'>View leaderboard</Button>
