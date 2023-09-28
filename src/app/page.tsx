@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useToast } from "@/components/ui/use-toast"
 import { DatePickerDemo } from '@/components/Datepicker'
 import Image from 'next/image'
@@ -15,6 +15,14 @@ import Link from 'next/link'
 
 export default function Home() {
 
+  useEffect(() => {
+        fetch('https://ict-6.vercel.app/api/quiz')
+            .then(response => response.json())
+            .then(json => console.log(json))
+  }, [])
+  
+  const { toast } = useToast()
+  
 
   return (
     <div className='min-h-screen grainy bg-gradient-to-r from-rose-100 to-teal-100 flex flex-col space-y-20 justify-center'>

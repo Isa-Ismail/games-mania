@@ -34,7 +34,7 @@ const TableComponent: React.FC<Props> = ({ data }) => {
                     {dataSorted?.map((e, id) => (
                         <TableRow className="border-dashed border-emerald-600">
                             <TableCell className="">{ id+1 }</TableCell>
-                            <TableCell className="">{ e.userId.username }</TableCell>
+                            <TableCell className="">{ e.username }</TableCell>
                             <TableCell className="">{ e.topic }</TableCell>
                             <TableCell className="">{ e.score }</TableCell>
                         </TableRow>
