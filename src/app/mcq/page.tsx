@@ -77,7 +77,7 @@ const page = () => {
                         description: "You have completed the quiz and scored " + score + " points",
                     })
 
-                    router.push('/leaderboard')
+                    router.push('/about')
                     
                 }}>
                     Publish result and view score 
