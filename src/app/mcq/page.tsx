@@ -6,11 +6,17 @@ import quizData from '../../lib/quiz.json'
 import { Button } from '@/components/ui/button';
 import { DialogDemo } from '@/components/Dialog';
 import { useRouter } from 'next/navigation';
-
+import { useAuth } from "@clerk/nextjs";
+import { useUser } from '@clerk/nextjs';
 
 interface Props {}
 
 const page = () => {
+
+    const { userId } = useAuth();
+    const { user } : any = useUser();
+
+    console.log(user)
 
     type Topic = 'game' | 'movie' | 'song' | 'Cars'
 
@@ -26,16 +32,7 @@ const page = () => {
 
     const [score, setScore] = React.useState(0)
 
-    const quiz = state.topic==='game' && quizData[index]
-
-    if (!state.authenticated) {
-        return (
-            <div className='min-h-screen space-y-10 flex flex-col justify-center items-center'>
-                <p>Please login to participate in the quiz and stay on the leaderboard</p>
-                <DialogDemo />
-            </div>
-        )
-   }
+    const quiz = state.topic === 'game' && quizData[index]
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
@@ -63,13 +60,13 @@ const page = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ score, topic: state.topic, userId: state.user._id })
+                    body: JSON.stringify({ score, topic: state.topic, userId, username: user.fullName })
                 });   
                 dispatch({ type: "SCORE", payload: score });
                 router.push('/about')
                 }}>
-                        Publish result and view score 
-                    </Button>}
+                    Publish result and view score 
+                </Button>}
         </div>
     )
 }

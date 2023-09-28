@@ -7,6 +7,9 @@ import Link from 'next/link'
 import { Button } from './ui/button'
 import { DialogDemo } from './Dialog'
 import { Store } from '@/lib/ProviderContext'
+import { useUser } from '@clerk/nextjs'
+import { useAuth } from '@clerk/nextjs'
+import { UserButton } from "@clerk/nextjs";
 
 interface Props {}
 
@@ -15,6 +18,8 @@ const Navbar = () => {
     const { state: { authenticated }, dispatch } = useContext(Store);
 
     const [show, setShow] = useState(false)
+
+    const { isSignedIn } = useUser();
 
     const handleShow = (e: any) => {
         setShow(e)
@@ -29,7 +34,7 @@ const Navbar = () => {
                 <div className='hidden md:flex items-center space-x-10 pt-2'>
                     <Link href='/mcq'>Quiz</Link>
                     <Link href='/leaderboard'>Leaderboard</Link>
-                    {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
+                    {isSignedIn ? <UserButton />:<Link href='/sign-up'><Button className='bg-gradient-to-r border-dashed border-cyan-700 text-black text-2xl from-rose-100 to-teal-100'>Sign up</Button></Link>}
                 </div>
                 <div className='md:hidden hover:cursor-pointer'>
                     {!show ? (<Image
@@ -53,7 +58,7 @@ const Navbar = () => {
                 <div className='space-y-6 flex flex-col py-4'>
                     <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/mcq'>Quiz</Link>
                     <Link className='hover:scale-105' onClick={()=>setShow(!show)} href='/leaderboard'>Leaderboard</Link>
-                    {authenticated ? <Button onClick={() => { dispatch({ type: "LOGOUT" }); setShow(!show); localStorage.clear()}}>LogOut</Button>:<DialogDemo />}
+                    {isSignedIn ? <UserButton />:<Link href='/sign-up'><Button className='bg-gradient-to-r border-dashed border-cyan-700 text-black text-2xl from-rose-100 to-teal-100'>Sign up</Button></Link>}
                 </div>
             </div>}
         </nav>

@@ -6,10 +6,11 @@ import Link from 'next/link'
 import React, { useContext } from 'react'
 
 const page = () => {
-    const {state} = useContext(Store)
+    const { state } = useContext(Store);
+    
     return (
         <div className='min-h-screen flex justify-center items-center'>
-            {state.authenticated ? <p>you scored {state.score} {state.score<5?'😔':'🥳' }</p>: <Link href='/mcq'>Give a quiz</Link>}
+            <p>you scored {state.score} {state.score<5?'😔':'🥳' }</p>
         </div>
     )
 }
