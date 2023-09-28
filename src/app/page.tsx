@@ -38,7 +38,7 @@ export default function Home() {
 
       <div className='md:flex items-center justify-between mx-auto md:mx-[10rem] space-y-10'>
         <div className='w-[20rem]  text-center flex-col justify-center mx-10 space-y-10'>
-          <h1 className='text-4xl font-bold text-teal-900'>Welcome to Pixel Puzzles Quiz</h1>
+          <h1 className='text-4xl font-bold text-teal-900'>Welcome to our <span className='text-rose-500'>Pixel Puzzles Quiz</span></h1>
           <h1 className='text-xl font-bold text-teal-900'><TypewriterTitle /></h1>
           <div>
             <Link href='/mcq'>

@@ -24,10 +24,10 @@ const TableComponent: React.FC<Props> = ({ data }) => {
                 <TableCaption>Quiz Leaderboard</TableCaption>
                     <TableHeader className="text-lg">
                     <TableRow className="border-dashed border-emerald-600">
-                            <TableHead className="">Position</TableHead>
-                            <TableHead className="">User name</TableHead>
-                            <TableHead className="">Topic</TableHead>
-                            <TableHead className="">Score</TableHead>
+                            <TableHead className="text-xl font-bold text-rose-700">Position</TableHead>
+                            <TableHead className="text-xl font-bold text-rose-700">User name</TableHead>
+                            <TableHead className="text-xl font-bold text-rose-700">Topic</TableHead>
+                            <TableHead className="text-xl font-bold text-rose-700">Score</TableHead>
                     </TableRow>
                     </TableHeader>
                     <TableBody>
