@@ -8,6 +8,7 @@ import { DialogDemo } from '@/components/Dialog';
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@clerk/nextjs";
 import { useUser } from '@clerk/nextjs';
+import { toast } from '@/components/ui/use-toast';
 
 interface Props {}
 
@@ -63,7 +64,8 @@ const page = () => {
                     body: JSON.stringify({ score, topic: state.topic, userId, username: user.fullName })
                 });   
                 dispatch({ type: "SCORE", payload: score });
-                router.push('/about')
+                    router.push('/leaderboard')
+                    toast.success('Quiz completed successfully')
                 }}>
                     Publish result and view score 
                 </Button>}
