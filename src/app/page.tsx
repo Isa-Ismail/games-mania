@@ -15,15 +15,22 @@ import Link from 'next/link'
 
 export default function Home() {
 
+  const { state, dispatch } = useContext(Store)
+
+
   useEffect(() => {
         fetch('https://ict-6.vercel.app/api/quiz')
             .then(response => response.json())
-            .then(json => setData(json))
+            .then(json => console.log(json))
   }, [])
-  
-  const [data, setData] = useState([])
 
-  console.log(data)
+  useEffect(() => {
+        fetch('https://ict-6.vercel.app/api/quiz')
+            .then(response => response.json())
+            .then(json => {
+                dispatch({ type: 'LEADERBOARD', payload: json })
+            })
+    }, [])
   
 
   return (

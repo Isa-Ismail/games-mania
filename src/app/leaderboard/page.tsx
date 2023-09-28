@@ -13,12 +13,12 @@ const page: React.FC<Props> = () => {
 
     const { state, dispatch } = useContext(Store)
 
-    console.log(state.leaderboard)
-
     useEffect(() => {
         fetch('https://ict-6.vercel.app/api/quiz')
             .then(response => response.json())
-            .then(json => dispatch({ type: 'LEADERBOARD', payload: json }))
+            .then(json => {
+                dispatch({ type: 'LEADERBOARD', payload: json })
+            })
     }, [])
 
     return (

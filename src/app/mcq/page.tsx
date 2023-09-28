@@ -17,8 +17,6 @@ const page = () => {
     const { userId } = useAuth();
     const { user } : any = useUser();
 
-    console.log(user)
-
     type Topic = 'game' | 'movie' | 'song' | 'Cars'
 
     const {state, dispatch} = useContext(Store);
@@ -56,16 +54,31 @@ const page = () => {
                     </Button>}
                 </div>
             </div> : <Button onClick={() => {
-                fetch('https://ict-6.vercel.app/api/quiz', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ score, topic: state.topic, userId, username: user.fullName })
-                });   
-                dispatch({ type: "SCORE", payload: score });
+                    
+                    fetch('https://ict-6.vercel.app/api/quiz', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ score, topic: state.topic, userId, username: user.fullName })
+                    }).then(response => response)
+                        .then(json => console.log(json))
+
+                    fetch('https://ict-6.vercel.app/api/quiz')
+                    .then(response => response.json())
+                    .then(json => {
+                        dispatch({ type: 'LEADERBOARD', payload: json })
+                    })  
+
+                    dispatch({ type: "SCORE", payload: score });
+
+                    toast({
+                        title: score>5?"Well done 👏👏👏":"Good try",
+                        description: "You have completed the quiz and scored " + score + " points",
+                    })
+
                     router.push('/leaderboard')
-                    toast.success('Quiz completed successfully')
+                    
                 }}>
                     Publish result and view score 
                 </Button>}
