@@ -16,6 +16,8 @@ import Link from 'next/link'
 export default function Home() {
   
   const { toast } = useToast()
+  const user = fetch('https://ict-6.vercel.app/api/auth').then((res) => res.json()).then((data) => data)
+  console.log(user)
 
   return (
     <div className='min-h-screen grainy bg-gradient-to-r from-rose-100 to-teal-100 flex flex-col space-y-20 justify-center'>
