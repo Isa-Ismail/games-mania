@@ -39,7 +39,7 @@ const page = () => {
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
-            {quiz?<div className='bg-cyan-400 p-10 shadow-md rounded-lg w-[40rem]'>
+            {quiz?<div className='bg-gradient-to-r from-rose-100 to-teal-100 p-10 shadow-md rounded-lg w-[40rem]'>
                 <h1 className='text-4xl text-center'>Question no: {index+1}</h1>
                 <br />
                 <h1 className='text-center text-xl '>{quiz.question}</h1>
